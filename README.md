@@ -11,12 +11,12 @@ bottom — then one click to a PNG in the exact size your post needs.
 ## How it works
 
 1. **Your photos** — add your own (they never leave your browser) or start from
-   the six golden-hour samples. Click a photo, then click a panel to place it.
+   the seven golden-hour samples. Click a photo, then click a panel to place it.
 2. **Crop & position** — click a panel, drag to pan its photo, scroll to zoom,
    or use the zoom slider. "Fill empty panels" spreads one photo across the
    cover; "One photo, all panels" makes a single-photo cover.
 3. **Layout, grade & lettering** — five comic layouts (Hero Collage, Comic,
-   Hero + 3, Film Strip, Four-Cut), four sunset grades (Warm Sunset, Neon
+   Hero + 4, Film Strip, Four-Cut), four sunset grades (Warm Sunset, Neon
    Night, Teal Coast, Ink Mono), four caption styles, editable title, tagline
    and every panel caption.
 4. **Export PNG** — 1080 × 1080, 1080 × 1350, or 1920 × 1080, exact dimensions,
@@ -53,8 +53,9 @@ node <kit>/cli/makefun.mjs check
 | `samples/boat.jpg` | Speedboat at sunset, Maldives | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Speedboat_-_Rannalhi,_Maldives_-_2016.jpg) | CC0 |
 | `samples/miami.jpg` | Miami skyline at dusk | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Miami_Sunset_(45863661094).jpg) | CC0 |
 | `samples/palms.jpg` | Palm silhouettes against an orange sunset | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sunset_behind_palm_trees.jpg) | CC BY-SA 4.0 |
+| `samples/pier.jpg` | Wooden pier at sunset, Sidney Spit | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:A_pier_at_a_campsite_during_sunset,_Sidney_Spit_(part_of_Gulf_Islands_National_Park_Reserve),_Sidney_Island,_British_Columbia,_Canada_20.jpg) | CC BY-SA 4.0 |
 
-All six were downloaded in-session from Wikimedia Commons thumbnails (free
+All seven were downloaded in-session from Wikimedia Commons thumbnails (free
 licenses above); none is a top-leaderboard entry's photo. Fonts: Bebas Neue
 and Caveat, SIL Open Font License, vendored under `app/fonts/`.
 

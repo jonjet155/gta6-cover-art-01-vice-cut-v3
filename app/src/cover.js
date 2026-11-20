@@ -49,57 +49,66 @@ export const CAPTION_STYLES = {
 
 // Layouts: panels in fractions of the cover (x, y, w, h, slant). Slot 0 is always
 // the hero — the big face-led photo. The rest are the small comic panels. Panels
-// end at 0.64 of the height: the giant title + tagline own the bottom strip, so
-// layouts never put a face or a caption under the title.
+// fill the cover down to 0.80 of the height, and the giant title OVERLAPS the
+// photo grid the way GTA posters do — never in its own empty band, and never
+// over a face (faces live in the hero and the top row; the bottom row is scenes).
+// Captions sit at the TOP of each small panel, so the title overlapping the
+// panel bottoms can never hide one.
 export const LAYOUTS = {
   hero: {
     label: 'Hero Collage',
     panels: [
-      { x: 0, y: 0, w: 1, h: 0.5, slant: 0.028 },
-      { x: 0, y: 0.5, w: 0.25, h: 0.14, slant: 0.02 },
-      { x: 0.25, y: 0.5, w: 0.25, h: 0.14, slant: -0.02 },
-      { x: 0.5, y: 0.5, w: 0.25, h: 0.14, slant: 0.02 },
-      { x: 0.75, y: 0.5, w: 0.25, h: 0.14, slant: -0.02 },
+      { x: 0, y: 0, w: 1, h: 0.46, slant: 0.028, photo: 'hero', caption: '' },
+      { x: 0, y: 0.46, w: 0.34, h: 0.17, slant: 0.02, photo: 'driver', caption: 'WHEEL IN HAND — 7:40 PM' },
+      { x: 0.34, y: 0.46, w: 0.33, h: 0.17, slant: -0.02, photo: 'window', caption: 'GOLDEN HOUR, NO WITNESSES' },
+      { x: 0.67, y: 0.46, w: 0.33, h: 0.17, slant: 0.02, photo: 'miami', caption: 'THE CITY NEVER BLINKS' },
+      // Bottom row: two side panels only. The centre is the title's ground —
+      // a panel there would sit dead-centre under the densest title glyphs
+      // and vanish, caption and all.
+      { x: 0, y: 0.63, w: 0.33, h: 0.17, slant: 0.02, photo: 'boat', caption: 'LAST BOAT OUT OF LEONIDA' },
+      { x: 0.67, y: 0.63, w: 0.33, h: 0.17, slant: -0.02, photo: 'pier', caption: 'THE PIER AT LOW TIDE' },
     ],
   },
   comic: {
     label: 'Comic',
     panels: [
-      { x: 0, y: 0, w: 0.6, h: 0.44, slant: 0.02 },
-      { x: 0.6, y: 0, w: 0.4, h: 0.44, slant: -0.02 },
-      { x: 0, y: 0.44, w: 0.34, h: 0.2, slant: 0.02 },
-      { x: 0.34, y: 0.44, w: 0.33, h: 0.2, slant: -0.02 },
-      { x: 0.67, y: 0.44, w: 0.33, h: 0.2, slant: 0.02 },
+      { x: 0, y: 0, w: 0.6, h: 0.52, slant: 0.02, photo: 'hero', caption: '' },
+      { x: 0.6, y: 0, w: 0.4, h: 0.26, slant: -0.02, photo: 'driver', caption: 'WHEEL IN HAND — 7:40 PM' },
+      { x: 0.6, y: 0.26, w: 0.4, h: 0.26, slant: -0.02, photo: 'window', caption: 'GOLDEN HOUR, NO WITNESSES' },
+      { x: 0, y: 0.52, w: 0.34, h: 0.28, slant: 0.02, photo: 'miami', caption: 'THE CITY NEVER BLINKS' },
+      { x: 0.34, y: 0.52, w: 0.33, h: 0.28, slant: -0.02, photo: 'boat', caption: 'LAST BOAT OUT OF LEONIDA' },
+      { x: 0.67, y: 0.52, w: 0.33, h: 0.28, slant: 0.02, photo: 'palms', caption: 'PALMS AT DUSK' },
     ],
   },
   hero3: {
-    label: 'Hero + 3',
+    label: 'Hero + 4',
     panels: [
-      { x: 0, y: 0, w: 1, h: 0.5, slant: 0.024 },
-      { x: 0, y: 0.5, w: 0.34, h: 0.14, slant: 0.02 },
-      { x: 0.34, y: 0.5, w: 0.33, h: 0.14, slant: -0.02 },
-      { x: 0.67, y: 0.5, w: 0.33, h: 0.14, slant: 0.02 },
+      { x: 0, y: 0, w: 1, h: 0.5, slant: 0.024, photo: 'hero', caption: '' },
+      { x: 0, y: 0.5, w: 0.5, h: 0.15, slant: 0.02, photo: 'driver', caption: 'WHEEL IN HAND — 7:40 PM' },
+      { x: 0.5, y: 0.5, w: 0.5, h: 0.15, slant: -0.02, photo: 'window', caption: 'GOLDEN HOUR, NO WITNESSES' },
+      { x: 0, y: 0.65, w: 0.5, h: 0.15, slant: 0.02, photo: 'miami', caption: 'THE CITY NEVER BLINKS' },
+      { x: 0.5, y: 0.65, w: 0.5, h: 0.15, slant: -0.02, photo: 'boat', caption: 'LAST BOAT OUT OF LEONIDA' },
     ],
   },
   strip: {
     label: 'Film Strip',
     panels: [
-      { x: 0, y: 0, w: 1, h: 0.44, slant: 0.024 },
-      { x: 0, y: 0.44, w: 0.2, h: 0.2, slant: 0 },
-      { x: 0.2, y: 0.44, w: 0.2, h: 0.2, slant: 0 },
-      { x: 0.4, y: 0.44, w: 0.2, h: 0.2, slant: 0 },
-      { x: 0.6, y: 0.44, w: 0.2, h: 0.2, slant: 0 },
-      { x: 0.8, y: 0.44, w: 0.2, h: 0.2, slant: 0 },
+      { x: 0, y: 0, w: 1, h: 0.5, slant: 0.024, photo: 'hero', caption: '' },
+      { x: 0, y: 0.5, w: 0.2, h: 0.3, slant: 0, photo: 'driver', caption: 'WHEEL IN HAND — 7:40 PM' },
+      { x: 0.2, y: 0.5, w: 0.2, h: 0.3, slant: 0, photo: 'window', caption: 'GOLDEN HOUR, NO WITNESSES' },
+      { x: 0.4, y: 0.5, w: 0.2, h: 0.3, slant: 0, photo: 'miami', caption: 'THE CITY NEVER BLINKS' },
+      { x: 0.6, y: 0.5, w: 0.2, h: 0.3, slant: 0, photo: 'boat', caption: 'LAST BOAT OUT OF LEONIDA' },
+      { x: 0.8, y: 0.5, w: 0.2, h: 0.3, slant: 0, photo: 'palms', caption: 'PALMS AT DUSK' },
     ],
   },
   fourcut: {
     label: 'Four-Cut',
     panels: [
-      { x: 0, y: 0, w: 0.66, h: 0.46, slant: 0.02 },
-      { x: 0.66, y: 0, w: 0.34, h: 0.46, slant: -0.02 },
-      { x: 0, y: 0.46, w: 0.34, h: 0.18, slant: 0.02 },
-      { x: 0.34, y: 0.46, w: 0.33, h: 0.18, slant: -0.02 },
-      { x: 0.67, y: 0.46, w: 0.33, h: 0.18, slant: 0.02 },
+      { x: 0, y: 0, w: 0.66, h: 0.52, slant: 0.02, photo: 'hero', caption: '' },
+      { x: 0.66, y: 0, w: 0.34, h: 0.52, slant: -0.02, photo: 'driver', caption: 'WHEEL IN HAND — 7:40 PM' },
+      { x: 0, y: 0.52, w: 0.34, h: 0.28, slant: 0.02, photo: 'window', caption: 'GOLDEN HOUR, NO WITNESSES' },
+      { x: 0.34, y: 0.52, w: 0.33, h: 0.28, slant: -0.02, photo: 'miami', caption: 'THE CITY NEVER BLINKS' },
+      { x: 0.67, y: 0.52, w: 0.33, h: 0.28, slant: 0.02, photo: 'boat', caption: 'LAST BOAT OUT OF LEONIDA' },
     ],
   },
 };
@@ -108,9 +117,10 @@ export const DEFAULT_CAPTIONS = [
   '',
   'WHEEL IN HAND — 7:40 PM',
   'GOLDEN HOUR, NO WITNESSES',
-  'LAST BOAT OUT OF LEONIDA',
   'THE CITY NEVER BLINKS',
+  'LAST BOAT OUT OF LEONIDA',
   'PALMS AT DUSK',
+  'THE PIER AT LOW TIDE',
 ];
 
 // Last painted panel rects in canvas pixels, for click hit-testing in the editor.
@@ -199,8 +209,10 @@ function drawPhotoPanel(ctx, img, r, grade, crop) {
 
 function drawCaptionBar(ctx, r, text, style, isHero) {
   if (!text) return;
+  // Caption box at the TOP of the panel: the giant title overlaps panel
+  // bottoms, so a bottom caption would hide under it.
   const barH = Math.max(20, r.h * 0.26);
-  const barY = r.y + r.h - barH;
+  const barY = r.y;
   const pad = barH * 0.32;
   ctx.save();
   ctx.beginPath();
@@ -229,32 +241,35 @@ function drawCaptionBar(ctx, r, text, style, isHero) {
 }
 
 function drawTitle(ctx, W, H, title, tagline) {
-  // The title owns the strip below the panels (panels end at 0.64H, the footer
-  // strip starts at 0.965H). Giant: fit to 94% of the width, never taller than
-  // 27% of the cover — and the fit loop also guarantees the tagline clears the
-  // footer, so the tagline can never be buried under it.
+  // The title OVERLAPS the photo grid like a GTA poster: panels fill the cover
+  // to 0.80H, and the title straddles that edge — its top over the bottom row
+  // of (faceless scene) panels, its bottom over the dark band below. Giant:
+  // fit to 94% of the width, never taller than 26% of the cover — and the fit
+  // loop also guarantees the tagline clears the footer, so it can never be
+  // buried under it.
   const footerTop = H * 0.965;
-  const titleTop = H * 0.64 + H * 0.004;
-  let size = H * 0.27;
+  let size = H * 0.26;
   const setFont = (s) => {
     ctx.font = `${s}px "Bebas Neue", sans-serif`;
     try { ctx.letterSpacing = `${-s * 0.012}px`; } catch { /* older canvas */ }
   };
   setFont(size);
+  const titleTop = () => H * 0.8 - size * 0.6;
   const fits = () => {
-    const tagSize = size * 0.22;
+    const tagSize = size * 0.2;
     return ctx.measureText(title).width <= W * 0.94
-      && titleTop + size + tagSize * 1.3 <= footerTop - 2;
+      && titleTop() + size + tagSize * 1.3 <= footerTop - 2;
   };
   while (size > 40 && !fits()) {
     size -= 4;
     setFont(size);
   }
   const titleH = size;
+  const top = titleTop();
   const cx = W / 2;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'top';
-  const grad = ctx.createLinearGradient(0, titleTop, 0, titleTop + titleH);
+  const grad = ctx.createLinearGradient(0, top, 0, top + titleH);
   grad.addColorStop(0, '#ffffff');
   grad.addColorStop(0.42, '#ffd7f2');
   grad.addColorStop(0.72, '#ff7ad9');
@@ -264,10 +279,10 @@ function drawTitle(ctx, W, H, title, tagline) {
   ctx.shadowColor = '#ff4fd8';
   ctx.shadowBlur = size * 0.14;
   ctx.fillStyle = grad;
-  ctx.fillText(title, cx, titleTop);
+  ctx.fillText(title, cx, top);
   ctx.shadowColor = '#7c3aed';
   ctx.shadowBlur = size * 0.07;
-  ctx.fillText(title, cx, titleTop);
+  ctx.fillText(title, cx, top);
   ctx.restore();
   // Crisp pass: thick dark outline, gradient fill, hard drop shadow.
   ctx.save();
@@ -277,14 +292,14 @@ function drawTitle(ctx, W, H, title, tagline) {
   ctx.lineJoin = 'round';
   ctx.lineWidth = Math.max(4, size * 0.05);
   ctx.strokeStyle = '#1c0b2e';
-  ctx.strokeText(title, cx, titleTop);
+  ctx.strokeText(title, cx, top);
   ctx.fillStyle = grad;
-  ctx.fillText(title, cx, titleTop);
+  ctx.fillText(title, cx, top);
   ctx.restore();
   // Tagline in script, tucked tight under the title, never overlapping it.
-  const tagSize = Math.max(20, size * 0.24);
+  const tagSize = Math.max(20, size * 0.2);
   ctx.save();
-  ctx.translate(cx, titleTop + titleH + tagSize * 0.55);
+  ctx.translate(cx, top + titleH + tagSize * 0.55);
   ctx.rotate(-0.03);
   ctx.font = `700 ${tagSize}px Caveat, cursive`;
   ctx.textAlign = 'center';
@@ -431,11 +446,12 @@ export function renderCover(canvas, state, photos) {
 }
 
 function drawSprockets(ctx, r) {
+  // Film-strip holes along the bottom edge only: captions now live at the
+  // top of each panel, so top holes would sit under the caption bar.
   const n = Math.max(3, Math.floor(r.w / 46));
   ctx.fillStyle = 'rgba(22, 10, 36, 0.9)';
   for (let i = 0; i < n; i++) {
     const x = r.x + ((i + 0.5) / n) * r.w;
-    ctx.fillRect(x - 4, r.y + 2, 8, 5);
     ctx.fillRect(x - 4, r.y + r.h - 7, 8, 5);
   }
 }

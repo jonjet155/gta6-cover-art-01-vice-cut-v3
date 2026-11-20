@@ -8,7 +8,6 @@ import {
   GRADES,
   CAPTION_STYLES,
   LAYOUTS,
-  DEFAULT_CAPTIONS,
   renderCover,
   exportPNG,
   hitPanel,
@@ -21,11 +20,12 @@ import {
 
 const SAMPLES = [
   { id: 'hero', name: 'Golden Hour Driver', src: 'samples/hero.jpg', focusY: 0.38 },
-  { id: 'driver', name: 'At the Wheel', src: 'samples/driver.jpg', focusY: 0.42 },
+  { id: 'driver', name: 'At the Wheel', src: 'samples/driver.jpg', focusY: 0.3 },
   { id: 'window', name: 'Window Light', src: 'samples/window.jpg', focusY: 0.45 },
   { id: 'boat', name: 'Last Boat Out', src: 'samples/boat.jpg', focusY: 0.55 },
   { id: 'miami', name: 'Neon Skyline', src: 'samples/miami.jpg', focusY: 0.5 },
   { id: 'palms', name: 'Palms at Dusk', src: 'samples/palms.jpg', focusY: 0.55 },
+  { id: 'pier', name: 'The Pier', src: 'samples/pier.jpg', focusY: 0.5 },
 ];
 
 const state = {
@@ -49,22 +49,20 @@ const $ = (id) => document.getElementById(id);
 const canvas = $('coverCanvas');
 
 function defaultPanels() {
-  const count = LAYOUTS[state.layout].panels.length;
-  const order = ['hero', 'driver', 'window', 'boat', 'miami', 'palms'];
-  const panels = [];
-  for (let i = 0; i < count; i++) {
-    const photoId = order[i % order.length];
-    const sample = SAMPLES.find((s) => s.id === photoId);
-    panels.push({
-      photo: photoId,
-      caption: DEFAULT_CAPTIONS[i % DEFAULT_CAPTIONS.length],
+  // Each layout names its own default photo + caption per slot, so a slot's
+  // caption always matches its photo (the bottom row of Hero Collage is
+  // scenes only — the title sits over its centre).
+  return LAYOUTS[state.layout].panels.map((p) => {
+    const sample = SAMPLES.find((s) => s.id === p.photo);
+    return {
+      photo: p.photo ?? null,
+      caption: p.caption ?? '',
       zoom: 1,
       panX: 0,
       panY: 0,
       focusY: sample?.focusY ?? 0.5,
-    });
-  }
-  return panels;
+    };
+  });
 }
 
 function loadImage(src) {
