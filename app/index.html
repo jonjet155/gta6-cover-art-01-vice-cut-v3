@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VICE CUT — Cover Studio</title>
+<meta name="description" content="Turn your photo into GTA-style cover art: hero photo, comic panels, giant neon title, one-click PNG export.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">VICE CUT</span>
+    <span class="brand-sub">Cover Studio · Painted in Leonida.</span>
+  </div>
+  <div class="top-actions">
+    <span class="pill">★ ORIGINAL COVER ART</span>
+    <span class="pill dim">VOL. 06</span>
+  </div>
+</header>
+
+<main class="studio">
+  <section class="preview" aria-label="Live cover preview">
+    <canvas id="coverCanvas" width="1000" height="1000"></canvas>
+    <p class="hint">Click a panel to select it · drag to pan its photo · scroll to zoom · then pick a photo below to place it</p>
+  </section>
+
+  <aside class="controls" aria-label="Cover controls">
+    <section class="step">
+      <h2><span class="num">1</span> Your photos</h2>
+      <p class="note">Your photos never leave this page — they are read in your browser only.</p>
+      <label class="upload" for="uploadInput">+ Add your photos</label>
+      <input id="uploadInput" type="file" accept="image/*" multiple hidden>
+      <div id="tray" class="tray"></div>
+      <div class="row">
+        <button id="fillBtn" type="button">Fill empty panels</button>
+        <button id="fillOneBtn" type="button">One photo, all panels</button>
+      </div>
+    </section>
+
+    <section class="step">
+      <h2><span class="num">2</span> Crop &amp; position</h2>
+      <p id="panelLabel" class="note">Panel 1</p>
+      <label class="field">Zoom <span id="zoomValue">100%</span>
+        <input id="zoomSlider" type="range" min="1" max="3" step="0.05" value="1">
+      </label>
+      <div class="row">
+        <button id="resetCropBtn" type="button">Reset crop</button>
+      </div>
+    </section>
+
+    <section class="step">
+      <h2><span class="num">3</span> Layout, grade &amp; lettering</h2>
+      <label class="field">Layout
+        <span class="btnrow">
+          <button type="button" data-layout="hero">Hero Collage</button>
+          <button type="button" data-layout="comic">Comic</button>
+          <button type="button" data-layout="hero3">Hero + 3</button>
+          <button type="button" data-layout="strip">Film Strip</button>
+          <button type="button" data-layout="fourcut">Four-Cut</button>
+        </span>
+      </label>
+      <label class="field">Sunset grade
+        <span class="btnrow">
+          <button type="button" data-grade="sunset">Warm Sunset</button>
+          <button type="button" data-grade="neon">Neon Night</button>
+          <button type="button" data-grade="teal">Teal Coast</button>
+          <button type="button" data-grade="mono">Ink Mono</button>
+        </span>
+      </label>
+      <label class="field">Caption style
+        <span class="btnrow">
+          <button type="button" data-style="chrome">Chrome</button>
+          <button type="button" data-style="neon">Neon</button>
+          <button type="button" data-style="sunset">Sunset</button>
+          <button type="button" data-style="mono">Mono</button>
+        </span>
+      </label>
+      <label class="field">Cover title
+        <input id="titleInput" type="text" value="VICE CUT" maxlength="24">
+      </label>
+      <label class="field">Tagline
+        <input id="taglineInput" type="text" value="Painted in Leonida." maxlength="48">
+      </label>
+      <label class="field">Selected panel caption
+        <input id="captionInput" type="text" value="" maxlength="48" placeholder="Type the panel caption…">
+      </label>
+      <div class="row">
+        <button id="starsToggle" type="button" class="active">★★★★★ Stars</button>
+        <button id="badgeToggle" type="button" class="active">Badges</button>
+      </div>
+    </section>
+
+    <section class="step export">
+      <h2><span class="num">4</span> Export PNG</h2>
+      <p class="note">One click, exact post size — ready to share.</p>
+      <div class="btnrow sizes">
+        <button type="button" data-size="square">■ Square</button>
+        <button type="button" data-size="portrait">▯ Portrait</button>
+        <button type="button" data-size="wide">▬ Wide</button>
+      </div>
+      <div class="export-btns">
+        <button type="button" data-export="square">PNG 1080 × 1080</button>
+        <button type="button" data-export="portrait">PNG 1080 × 1350</button>
+        <button type="button" data-export="wide">PNG 1920 × 1080</button>
+      </div>
+      <p class="credits">Sample photos: free-license images via Wikimedia Commons (CC BY 2.0 / CC0 / CC BY-SA 4.0) — see README for credits. Fonts: Bebas Neue &amp; Caveat (OFL).</p>
+    </section>
+  </aside>
+</main>
+
+<script type="module" src="src/main.js"></script>
+<script type="module" src="src/shots.js"></script>
+</body>
+</html>
